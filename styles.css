@@ -1,0 +1,51 @@
+
+html{
+    background-color: grey;
+}
+
+body{
+    background-color: grey;
+}
+
+h2,h3,h4{
+    margin-top: 10px;
+    text-align: center;
+    font-size: 36px;
+    color: black;
+}
+
+#total{
+    margin-right:600px;
+    border-radius: 2px;
+    border: solid;
+    border-color: navy;
+    text-align: center;
+}
+
+
+
+form{
+    margin:10px 75px;
+    border-radius: 2px;
+    border: solid;
+    border-color: navy;
+    background-color: white;
+}
+
+#buildyourpizza{
+    margin:10px 75px;
+    border-radius: 2px;
+    border: solid;
+    border-color: darkcyan;
+    background-color: white;
+}
+
+
+
+a{
+    color:white;
+}
+
+a:link{
+    text-decoration: none;
+}

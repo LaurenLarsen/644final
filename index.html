@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipment and Pizza Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+
+  
+
+  <header id="main-header" class="bg-dark text-white p-4 mb-3" >
+    <div class="container-fluid" >
+        <h1 class="header-title" >Larsens Pizza</h1>
+    </div>
+</header>
+
+<div class="container-fluid" >
+  <div class="row">
+
+      <div class="col-lg-12 col-md-12 mb-4">
+          <div id="main" class="card card-body">
+              <h2 class="title mb-4">Your Shipping Information</h2>
+              <form action="" id="shippingForm" name="shippingForm">
+                 
+                <label for="validationCustom02">First Name</label><br>
+                <input type="text" id="validationCustom02"  class="form-control">
+
+                <label for="lName">Last Name</label><br>
+                <input type="text"  id="lName" class="form-control"><br>
+                 
+                <label for="addressType">Select Address Type</label><br>
+                <select id="addressType"  class="form-control" name="color" onchange='CheckColors(this.value);'>
+                    
+                    <option value="House">House</option>
+                    <option value="Apartment">Apartment</option>
+                    <option value="Business">Business</option>
+                    <option value="Campus">Campus</option>
+                    <option value="Hotel">Hotel</option>
+                    <option value="Dorm">Dorm</option>
+                    <option value="others">Other</option>
+                    <input type="text" name="color" id="color" style='display:none;'/>
+                </select> <br>
+               
+                <label for="streetAddress">Street Address</label><br>
+                <input type="text"  id="streetAddress" class="form-control"><br>
+
+                <label for="addressNumber">Unit/Suite Number</label><br>
+                <input type="text"  id="addressNumber" class="form-control"><br>
+
+                <label for="city">City</label><br>
+                <input type="text"  id="city" class="form-control"><br>
+
+                <label for="state">State</label><br>
+                <input type="text"  id="state" class="form-control"><br>
+
+                <label for="zip">Zip</label><br>
+                <input type="text" id="zip" class="form-control"><br>
+
+                <label for="phone">Phone Number</label><br>
+                <input type="text"  id="phone" class="form-control"><br>
+        
+                <label for="email">Email</label><br>
+                <input type="email" required id="email" class="form-control"><br>
+
+                <input type="submit" class="btn btn-dark" value="ConfirmDetails" >
+              </form>
+          </div>
+      </div>
+
+  <div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 mb-4">
+            <div id="main" class="card card-body">
+              
+              <label>
+                Total 
+                <input value="$0.00" readonly="readonly" type="text" id="total"/>
+            </label>
+  
+              <h2 class="title mb-4">Build Your Pizza</h2>
+              
+              <form action="" id="pizzaForm">
+
+                <label for="doughType">Select Your Dough</label><br>
+                <div class="form-check"  data-bs-toggle="collapse">
+                  <input  class="form-check-input" type="radio"  id="radio" type="radio" id="radio_Email_yes" value="yes" name="radio" onclick="javascript:myFunction();" >
+                  <label class="form-check-label" for="flexCheckDefault">Hand Tossed</label>
+                  <select class="dough"  >
+                    <option value="9.99" >Small ($9.99)</option>
+                    <option value="12.99" >Medium ($12.99)</option>
+                    <option value="14.99" >Large ($14.99)</option>
+                  </select>
+                </div>
+
+                <div class="form-check">
+                    <input name="product" class="form-check-input" type="radio"  id="flexCheckDefault" onclick="totalIt()">
+                    <label class="form-check-label" for="flexCheckDefault">Thin Crust</label>
+                    <select>
+                      <option value="11.99" >Medium ($11.99)</option>
+                      <option value="13.99" >Large ($13.99)</option>
+                    </select>
+                </div>
+                <div class="form-check">
+                    <input name="product" class="form-check-input" type="radio"  id="flexCheckDefault" onclick="totalIt()">
+                    <label class="form-check-label" for="flexCheckDefault">New York Style</label>
+                    <select>
+                      <option value="16.99" >Large ($16.99)</option>
+                      <option value="19.99" >X-Large ($19.99)</option>
+                    </select>
+                </div>
+                <div class="form-check">
+                    <input name="product" class="form-check-input" type="radio"  id="flexCheckDefault" onclick="totalIt()">
+                    <label class="form-check-label" for="flexCheckDefault">Gluten Free</label>
+                    <select>
+                      <option value="10.99" >Small ($10.99)</option>
+                    </select>
+                </div>
+
+
+                <label for="cheeseType">Select Your Cheese</label><br>
+                <select id="cheeseType" name="cheese" onchange="totalCheese()" class="form-control">
+                  <option value="1.00" >Light: No Charge</option>
+                  <option value="0.00">Normal (default): No Charge</option>
+                  <option value="2.99">Extra: +$2.99</option>
+                  <option value="3.99">Double: +$3.99</option>
+                </select> <br>
+
+
+         
+                <label for="sauceType">Select Your Sauce</label><br>
+                <select id="sauceType"  class="form-control">
+                  <option value="0.00">Regular Tomato: No Charge</option>
+                  <option value=".99">Hearty Tomato: +$.99</option>
+                  <option value="1.99">BBQ Sauce: +$1.99</option>
+                </select> <br>
+
+                <label for="extratoppings" id="extratoppings">Select Your Extra Toppings $.99 Each</label><br>
+                <div class="form-check form-check-inline">
+                  <input name="product" class="form-check-input" type="checkbox" value=".99" id="flexCheckDefault" onclick="totalIt()">
+                  <label class="form-check-label" for="flexCheckDefault">Pepperoni</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input name="product" class="form-check-input" type="checkbox" value=".99" id="flexCheckDefault" onclick="totalIt()">
+                    <label class="form-check-label" for="flexCheckDefault">Sausage</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input name="product" class="form-check-input" type="checkbox" value=".99" id="flexCheckDefault" onclick="totalIt()">
+                    <label class="form-check-label" for="flexCheckDefault">Ham</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input name="product" class="form-check-input" type="checkbox" value=".99" id="flexCheckDefault" onclick="totalIt()">
+                    <label class="form-check-label" for="flexCheckDefault">Bacon</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input name="product" class="form-check-input" type="checkbox" value=".99" id="flexCheckDefault" onclick="totalIt()">
+                    <label class="form-check-label" for="flexCheckDefault">Salami</label>
+                </div>
+                <div class="form-check form-check-inline" class="float">
+                    <input name="product" class="form-check-input" type="checkbox" value=".99" id="flexCheckDefault" onclick="totalIt()">
+                    <label class="form-check-label" for="flexCheckDefault">Peppers</label>
+                </div>
+                <div class="form-check form-check-inline" class="float">
+                    <input name="product" class="form-check-input" type="checkbox" value=".99" id="flexCheckDefault" onclick="totalIt()">
+                    <label class="form-check-label" for="flexCheckDefault">Olives</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input name="product" class="form-check-input" type="checkbox" value=".99" id="inlineCheckbox1" onclick="totalIt()">
+                    <label class="form-check-label" for="inlineCheckbox1">Jalapenos</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input name="product" class="form-check-input" type="checkbox" value=".99" id="inlineCheckbox1" onclick="totalIt()">
+                    <label class="form-check-label" for="inlineCheckbox1">Mushrooms</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input name="product" class="form-check-input" type="checkbox" value=".99" id="flexCheckDefault" onclick="totalIt()">
+                    <label class="form-check-label" for="flexCheckDefault">Pineapple</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input name="product" class="form-check-input" type="checkbox" value=".99" id="flexCheckDefault" onclick="totalIt()">
+                    <label class="form-check-label" for="flexCheckDefault">Onion</label>
+                </div>
+                <br>
+                <br>
+
+                <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Create My Pizza
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Edit My Order</button>
+        <button type="button" class="btn btn-primary" ><a href="billing.html">Continue to Billing</a></button>
+      </div>
+    </div>
+  </div>
+</div>
+                </form>
+      </div>
+    </div>
+
+
+    
+
+
+    
+</body>
+</html>
